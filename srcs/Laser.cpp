@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:52:51 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 14:52:52 by hpelat           ###   ########.fr       */
+/*   Updated: 2018/10/06 18:38:11 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ Laser::Laser( void ) : Ufo(0, 0, 0, 0) {
 
 }
 
-Laser::Laser( unsigned int x, unsigned int y, unsigned int hp, double speed ) : Ufo(x, y, hp, speed) {
+Laser::Laser( unsigned int x, unsigned int y, unsigned int hp, double speed ) :
+	Ufo(x, y, hp, speed),
+	_next(NULL) {
 
 }
 
@@ -51,4 +53,9 @@ bool		Laser::operator==( Ufo const & ufo ) {
 void		Laser::printForTest( void ) {
 
 	std::cout << "Je ne suis qu'un Laser" << std::endl;
+}
+
+Laser*	Laser::getNext() const
+{
+	return _next;
 }

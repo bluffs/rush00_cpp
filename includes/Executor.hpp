@@ -4,22 +4,20 @@
 #include <ctime>
 #include <ncurses.h>
 
-/*#include "Player.hpp"
+#include "Player.hpp"
 #include "Enemy.hpp"
 #include "Laser.hpp"
-#include "Spawner.hpp"
-*/
-
+//#include "Spawner.hpp"
 
 
 class Executor
 {
 	private:
-		/*Player 			_player;
+		Player* 		_player;
 		Enemy*			_enemy;
 		Laser*			_laser;
-		Spawner			_spawner;
-		*/clock_t			_start;
+		//Spawner			_spawner;
+		clock_t			_start;
 		unsigned int	_score;
 		WINDOW*			_game;
 		WINDOW*			_info;
@@ -30,9 +28,11 @@ class Executor
 		Executor();
 		~Executor();
 		void		update();
-		void		checkColision();
+		void		checkCollision();
 		void		checkDie();
 		void		draw();
+		Player*		getPlayer() const;
+		void		delwindow();
 };
 
 #endif

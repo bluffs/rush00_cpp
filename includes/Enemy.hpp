@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:46:27 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 14:46:29 by hpelat           ###   ########.fr       */
+/*   Updated: 2018/10/06 18:35:27 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Enemy : public Ufo {
 		Enemy( Enemy const & enemy );
 		~Enemy( void );
 		bool 	operator==( Ufo const & ufo );
-
+		Enemy*	getNext() const;
 
     protected:
 		Enemy( void );
@@ -31,6 +31,7 @@ class Enemy : public Ufo {
 
 	private:
 		double		_shoot_freq;
+		Enemy*		_next;
 };
 
 #endif

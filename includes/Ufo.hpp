@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:45:08 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 14:45:10 by hpelat           ###   ########.fr       */
+/*   Updated: 2018/10/06 18:58:57 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ class Ufo {
 		~Ufo( void );
 		bool    operator==( Ufo const & ufo );
 
-		int					getPosX( void ) const;
-		int					getPosY( void ) const;
-		int					getHp( void ) const;
+		unsigned int		getPosX( void ) const;
+		unsigned int		getPosY( void ) const;
+		unsigned int		getHp( void ) const;
+		void				setX(unsigned int x);
+		void				setY(unsigned int y);
 
-        // void virtual		update( void );
+        void virtual		update( void );
         void virtual		takeDamage( unsigned int dmg );
         // void virtual		die( void );
 

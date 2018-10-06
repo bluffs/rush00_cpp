@@ -2,7 +2,7 @@
 
 CC = clang++
 
-OPTION = -c
+OPTION = -c -I./includes
 
 FLAG = #-Wall -Werror -Wextra
 
@@ -10,7 +10,7 @@ NCURSE = -lncurses
 
 NAME = ft_retro
 
-SRC = main.cpp Executor.cpp
+SRC = main.cpp Executor.cpp Player.cpp Ufo.cpp Laser.cpp Enemy.cpp Weak.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -19,8 +19,8 @@ all: $(NAME)
 $(NAME) : $(OBJ)
 	@$(CC) $(FLAG) -o $(NAME) $(OBJ) $(NCURSE)
 
-$(OBJ): $(SRC)
-	@$(CC) $(FLAG) $(OPTION) $(SRC)
+$(OBJ): $(addprefix srcs/, $(SRC))
+	@$(CC) $(FLAG) $(OPTION) $(addprefix srcs/, $(SRC))
 
 clean:
 	@rm -rf $(OBJ)

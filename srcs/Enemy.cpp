@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:52:44 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 14:52:45 by hpelat           ###   ########.fr       */
+/*   Updated: 2018/10/06 18:35:25 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ Enemy::Enemy( Enemy const & enemy ) {
 		*this = enemy;
 }
 
-Enemy::Enemy( unsigned int x, unsigned y, unsigned int hp, double speed, double shoot_freq ) : Ufo(x, y, hp, speed), _shoot_freq(shoot_freq) {
+Enemy::Enemy( unsigned int x, unsigned y, unsigned int hp, double speed, double shoot_freq ) :
+	Ufo(x, y, hp, speed),
+	_shoot_freq(shoot_freq),
+	_next(NULL) {
 
 }
 
@@ -38,4 +41,9 @@ Ufo &		Enemy::operator=( Ufo const & ufo ) {
 bool		Enemy::operator==( Ufo const & ufo ) {
 
 	return (Ufo::operator==(ufo));
+}
+
+Enemy*	Enemy::getNext() const
+{
+	return _next;
 }

@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:46:51 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 14:46:53 by hpelat           ###   ########.fr       */
+/*   Updated: 2018/10/06 18:37:01 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Laser : public Ufo {
 		Laser( Laser const & laser );
 		~Laser( void );
 		bool 	operator==( Ufo const & ufo );
+		Laser*	getNext() const;
 
         // void virtual		update( void );
         // void virtual		die( void );
@@ -32,6 +33,9 @@ class Laser : public Ufo {
     protected:
 		Laser( void );
 		Ufo &	operator=( Ufo const & ufo );
+
+	private:
+		Laser*	_next;
 
 };
 
