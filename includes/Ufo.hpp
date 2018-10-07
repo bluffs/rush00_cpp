@@ -15,39 +15,44 @@
 
 # include <ctime>
 # include <iostream>
+# include <ncurses.h>
+
+# include "tools.hpp"
+
+class Executor;
 
 class Ufo {
 
-    public:
-		Ufo( unsigned int x, unsigned int y, unsigned int hp, double speed );
-		Ufo( Ufo const & ufo );
-		~Ufo( void );
-		bool    operator==( Ufo const & ufo );
+public:
+	Ufo(unsigned int x, unsigned int y, unsigned int hp, double speed);
+	Ufo(Ufo const &ufo);
+	virtual ~Ufo();
 
-		unsigned int		getPosX( void ) const;
-		unsigned int		getPosY( void ) const;
-		unsigned int		getHp( void ) const;
-		void				setX(unsigned int x);
-		void				setY(unsigned int y);
+	unsigned int getPosX() const;
+	unsigned int getPosY() const;
+	unsigned int getHp() const;
+	Ufo *getNext() const;
 
-        void virtual		update( void );
-        void virtual		takeDamage( unsigned int dmg );
-        void virtual		die( void );
+	void setNext(Ufo *next);
+	void setX(unsigned int x);
+	void setY(unsigned int y);
 
-        void virtual		printForTest( void );
+	virtual void update(Executor &executor);
+	virtual void draw(WINDOW *game, WINDOW *info);
+	virtual void takeDamage(unsigned int dmg);
+	virtual void die();
 
+	virtual Ufo &operator=(Ufo const &ufo);
+	virtual bool operator==(Ufo const &ufo);
 
-    protected:
-		Ufo( void );
-        Ufo &   operator=( Ufo const & ufo );
-
-
-    private:
-        unsigned int		_x;
-        unsigned int		_y;
-        unsigned int		_hp;
-        clock_t				_last;
-        double				_speed;
+private:
+	unsigned int _x;
+	unsigned int _hp;
+	Ufo *_next;
+protected:
+	double _speed;
+	clock_t _last;
+	unsigned int _y;
 };
 
 #endif

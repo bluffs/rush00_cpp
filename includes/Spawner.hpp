@@ -3,18 +3,19 @@
 
 #include "Enemy.hpp"
 
-class Spawner
-{
-	private:
-		double 	_frequency;
-		clock_t	_last;
-		Spawner(Spawner const & spawner);
-		Spawner& operator=(Spawner const & spawner);
-		
-	public:
-		Spawner();
-		~Spawner();
-		Enemy*	update();
+class Spawner : public Ufo {
+public:
+	Spawner();
+	Spawner(Spawner const &spawner);
+	~Spawner() override;
+
+	Spawner &operator=(Spawner const &spawner);
+
+	void update(Executor &executor) override;
+
+private:
+	double _frequency;
+	clock_t _last;
 };
 
 #endif

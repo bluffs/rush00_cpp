@@ -9,31 +9,30 @@
 #include "Laser.hpp"
 #include "Spawner.hpp"
 
+class Executor {
+private:
+	Player	*_player;
+	Spawner	*_spawner;
+	Enemy	* _enemy;
+	Laser	*_laser;
+	WINDOW	*_info;
+	WINDOW	*_game;
+	clock_t	_start;
 
-class Executor
-{
-	private:
-		Player* 		_player;
-		Enemy*			_enemy;
-		Laser*			_laser;
-		Spawner			_spawner;
-		clock_t			_start;
-		//unsigned int	_score;
-		WINDOW*			_game;
-		WINDOW*			_info;
-		Executor(Executor const & exe);
-		Executor&		operator=(Executor const & exe);
+	Executor(Executor const &exe);
+	Executor &operator=(Executor const &exe);
 
-	public:
-		Executor();
-		~Executor();
-		void		update();
-		void		checkCollision();
-		void		checkDie();
-		void		draw();
-		void		drawEnemy();
-		Player*		getPlayer() const;
-		void		delwindow();
+public:
+	Executor();
+	~Executor();
+
+	void update();
+	void checkCollision();
+	void checkDie();
+	void draw();
+	Player &getPlayer();
+	void push(Enemy *enemy);
+	void push(Laser *laser);
 };
 
 #endif

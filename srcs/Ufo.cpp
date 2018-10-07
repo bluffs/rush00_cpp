@@ -12,10 +12,6 @@
 
 #include "Ufo.hpp"
 
-Ufo::Ufo( void ) : _x(0), _y(0), _hp(0), _last(clock()), _speed(0) {
-
-}
-
 Ufo::Ufo( unsigned int x, unsigned int y, unsigned int hp, double speed ) :
 	_x(x),
 	_y(y),
@@ -80,18 +76,14 @@ void	Ufo::setY( unsigned int y )
 	_y = y;
 }
 
-void		Ufo::update( void )
+void		Ufo::update( Executor &executor )
 {
-	clock_t now = clock();
+	(void)executor;
+}
 
-	double	delay = (now - _last);
-	delay = delay / CLOCKS_PER_SEC;
-
-	if (delay >= _speed)
-	{
-		++_y;
-		_last = now;
-	}
+void Ufo::draw(WINDOW *game, WINDOW *info) {
+	(void)game;
+	(void)info;
 }
 
 void		Ufo::takeDamage( unsigned int dmg ) {
@@ -99,11 +91,14 @@ void		Ufo::takeDamage( unsigned int dmg ) {
 	_hp -= dmg > _hp ? _hp : dmg;
 }
 
-void		Ufo::die( void ) {
-
+Ufo *Ufo::getNext() const {
+	return _next;
 }
 
-void		Ufo::printForTest( void ) {
+void Ufo::setNext(Ufo *next) {
+	Ufo::_next = next;
+}
 
-	std::cout << "Je ne suis qu'un Ufo" << std::endl;
+void Ufo::die() {
+
 }

@@ -13,7 +13,7 @@ LDLIBS  = ncurses
 
 ifneq ($(DEBUG),)
   BUILD_DIR = build/debug
-  CFLAGS  += -g -O0 -fsanitize=address
+  CFLAGS  += -g3 -O0 -fsanitize=address
   LDFLAGS += -fsanitize=address
   NAME_SUFFIX = -debug
 else

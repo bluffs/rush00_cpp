@@ -1,41 +1,30 @@
 #include "Spawner.hpp"
 #include "Weak.hpp"
 #include "tools.hpp"
+#include "Executor.hpp"
 #include <ctime>
 
-Spawner::Spawner() :
-	_frequency(0.5f),
-	_last(clock())
-{
-}
+Spawner::Spawner()
+	: Ufo(0, 0, 0, 0), _frequency(1.f) { }
 
-Spawner::Spawner(Spawner const & spawner)
-{
-	*this = spawner;
-}
+Spawner::Spawner(Spawner const &spawner)
+	: Ufo(spawner), _frequency(spawner._frequency) { }
 
-Spawner&	Spawner::operator=(Spawner const & spawner)
-{
+Spawner::~Spawner() = default;
+
+Spawner &Spawner::operator=(Spawner const &spawner) {
+	*(Ufo *)this = (Ufo &)spawner;
 	_frequency = spawner._frequency;
-	_last = spawner._last;
 	return *this;
 }
 
-Spawner::~Spawner()
-{
-}
+void Spawner::update(Executor &executor) {
+	clock_t now = clock();
+	double delay = (now - _last) / (CLOCKS_PER_SEC);
 
-Enemy*		Spawner::update()
-{
-	clock_t	now = clock();
-	double delay = (now - _last);
-	delay = delay / CLOCKS_PER_SEC;
-
-	if (delay >= _frequency)
-	{
+	if (delay >= _frequency) {
 		_last = now;
 		unsigned x = rand() % (GAMEW - 2) + 1;
-		return (new Weak(x, 1, 1, 0.2f, 2));
+		executor.push(new Weak(x, 1, 1, 0.8f, 2));
 	}
-	return (NULL);
 }

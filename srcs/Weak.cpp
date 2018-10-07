@@ -12,44 +12,34 @@
 
 #include "Weak.hpp"
 
-Weak::Weak( void ) : Enemy(0, 0, 0, 0, 0) {
+Weak::Weak(unsigned int x, unsigned y, unsigned int hp, double speed,
+		   double shoot_freq)
+	: Enemy(x, y, hp, speed, shoot_freq) { }
 
+Weak::Weak(Weak const &weak)
+	: Enemy(weak) { }
+
+Weak::~Weak() = default;
+
+void Weak::draw(WINDOW *game, WINDOW *info) {
+	(void)info;
+	mvwprintw(game, getPosY(), getPosX(), "V");
 }
 
-Weak::Weak( Weak const & weak ) {
-
-	if (this != & weak)
-		*this = weak;
+Weak &Weak::operator=(Weak const &weak) {
+	*(Enemy *)this = (Enemy &)weak;
+	return *this;
 }
 
-Weak::Weak( unsigned int x, unsigned y, unsigned int hp, double speed, double shoot_freq ) :
-	Enemy(x, y, hp, speed, shoot_freq ) {
+void Weak::update(Executor &executor) {
+	clock_t now = clock();
 
-}
+	(void)executor;
+	double	delay = (now - _last);
+	delay = delay / CLOCKS_PER_SEC;
 
-Weak::~Weak( void ) {
-
-}
-
-Ufo &		Weak::operator=( Ufo const & ufo ) {
-
-	return (Ufo::operator=(ufo));
-}
-
-bool		Weak::operator==( Ufo const & ufo ) {
-
-	return (Enemy::operator==(ufo));
-}
-
-// void		Weak::update( void ) {
-
-// }
-
-// void		Weak::die( void ) {
-
-// }
-
-void		Weak::printForTest( void ) {
-
-	std::cout << "Je ne suis qu'un Weak Enemy" << std::endl;
+	if (delay >= _speed) {
+		++_y;
+		_last = now;
+	}
 }

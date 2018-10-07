@@ -16,23 +16,16 @@
 # include "Enemy.hpp"
 
 class Weak : public Enemy {
+public:
+	Weak(unsigned int x, unsigned int y, unsigned int hp, double speed,
+		 double shoot_freq);
+	Weak(Weak const &weak);
+	~Weak() override;
 
-    public:
-		Weak( unsigned int x, unsigned int y, unsigned int hp, double speed, double shoot_freq );
-		Weak( Weak const & weak );
-		~Weak( void );
-		bool	operator==( Ufo const & ufo );
+	Weak &operator=(Weak const &enemy);
 
-		// void virtual		update( void );
-        // void virtual		die( void );
-
-		void virtual		printForTest( void );
-
-
-    protected:
-		Weak( void );
-		Ufo &	operator=( Ufo const & ufo );
-
+	void draw(WINDOW *game, WINDOW *info) override;
+	void update(Executor &executor) override;
 };
 
 #endif

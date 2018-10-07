@@ -12,50 +12,33 @@
 
 #include "Laser.hpp"
 
-Laser::Laser( void ) : Ufo(0, 0, 0, 0) {
+Laser::Laser(unsigned int x, unsigned int y)
+	: Ufo(x, y, 1, 0.1f) { }
 
+Laser::Laser(Laser const &laser)
+	: Ufo(laser) { }
+
+Laser::~Laser() = default;
+
+Laser &Laser::operator=(Laser const &laser) {
+	*(Ufo *)this = (Ufo &)laser;
+	return *this;
 }
 
-Laser::Laser( unsigned int x, unsigned int y, unsigned int hp, double speed ) :
-	Ufo(x, y, hp, speed),
-	_next(NULL) {
+void Laser::update(Executor &executor) {
+	clock_t now = clock();
 
+	(void)executor;
+	double delay = (now - _last);
+	delay /= CLOCKS_PER_SEC;
+
+	if (delay >= _speed) {
+		--_y;
+		_last = now;
+	}
 }
 
-Laser::Laser( Laser const & laser ) {
-
-	if (this != &laser)
-		*this = laser;
-}
-
-Laser::~Laser( void ) {
-
-}
-
-Ufo &		Laser::operator=( Ufo const & ufo ) {
-
-	return (Ufo::operator=(ufo));
-}
-
-bool		Laser::operator==( Ufo const & ufo ) {
-
-	return (Ufo::operator==(ufo));
-}
-
-// void		Laser::update( void ) {
-
-// }
-
-// void		Laser::die( void ) {
-
-// }
-
-void		Laser::printForTest( void ) {
-
-	std::cout << "Je ne suis qu'un Laser" << std::endl;
-}
-
-Laser*	Laser::getNext() const
-{
-	return _next;
+void Laser::draw(WINDOW *game, WINDOW *info) {
+	(void)info;
+	mvwprintw(game, getPosY(), getPosX(), "'");
 }

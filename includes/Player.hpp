@@ -16,22 +16,15 @@
 # include "Ufo.hpp"
 
 class Player : public Ufo {
+public:
+	Player();
+	Player(Player const &player);
+	~Player() override;
 
-    public:
-		Player( void );
-		Player( Player const & player );
-		~Player( void );
-		bool	operator==( Ufo const & ufo );
+	Player &operator=(Player const &player);
 
-        // void virtual		update( void );
-        // void virtual		die( void );
-
-		void virtual		printForTest( void );
-
-
-	protected:
-		Ufo &	operator=( Ufo const & ufo );
-
+	void onAction(Executor &executor, int ch);
+	void draw(WINDOW *game, WINDOW *info) override;
 };
 
 #endif

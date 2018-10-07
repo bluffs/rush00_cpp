@@ -16,24 +16,18 @@
 # include "Ufo.hpp"
 
 class Enemy : public Ufo {
+public:
+	Enemy(unsigned int x, unsigned int y, unsigned int hp, double speed,
+		  double shoot_freq);
+	Enemy(Enemy const &enemy);
+	~Enemy() override;
 
-    public:
-		Enemy( unsigned int x, unsigned int y, unsigned int hp, double speed, double shoot_freq );
-		Enemy( Enemy const & enemy );
-		virtual ~Enemy( void );
-		bool 	operator==( Ufo const & ufo );
-		Enemy*	getNext() const;
-		void	setNext(Enemy* enemy);
-		void	die( void  );
+	Enemy &operator=(Enemy const &enemy);
 
-    protected:
-		Enemy( void );
-		Ufo &	operator=( Ufo const & ufo );
+	void die() override;
 
-
-	private:
-		double		_shoot_freq;
-		Enemy*		_next;
+private:
+	double _shoot_freq;
 };
 
 #endif

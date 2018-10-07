@@ -12,48 +12,21 @@
 
 #include "Enemy.hpp"
 
-Enemy::Enemy( void ) : Ufo(0, 0, 0, 0) {
+Enemy::Enemy(unsigned int x, unsigned y, unsigned int hp, double speed,
+			 double shoot_freq)
+	: Ufo(x, y, hp, speed), _shoot_freq(shoot_freq) { }
 
+Enemy::Enemy(Enemy const &enemy)
+	: Ufo(enemy), _shoot_freq(enemy._shoot_freq) { }
+
+Enemy::~Enemy() = default;
+
+Enemy &Enemy::operator=(Enemy const &enemy) {
+	*(Ufo *)this = (Ufo &)enemy;
+	_shoot_freq = enemy._shoot_freq;
+	return *this;
 }
 
-Enemy::Enemy( Enemy const & enemy ) {
-
-	if (this != & enemy)
-		*this = enemy;
-}
-
-Enemy::Enemy( unsigned int x, unsigned y, unsigned int hp, double speed, double shoot_freq ) :
-	Ufo(x, y, hp, speed),
-	_shoot_freq(shoot_freq),
-	_next(NULL) {
-
-}
-
-Enemy::~Enemy( void ) {
-
-}
-
-Ufo &		Enemy::operator=( Ufo const & ufo ) {
-
-	return (Ufo::operator=(ufo));
-}
-
-bool		Enemy::operator==( Ufo const & ufo ) {
-
-	return (Ufo::operator==(ufo));
-}
-
-Enemy*	Enemy::getNext() const
-{
-	return _next;
-}
-
-void	Enemy::setNext(Enemy* enemy)
-{
-	_next = enemy;
-}
-
-void	Enemy::die( void )
-{
+void	Enemy::die( void ) {
 
 }

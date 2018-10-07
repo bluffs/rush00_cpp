@@ -16,27 +16,15 @@
 # include "Ufo.hpp"
 
 class Laser : public Ufo {
+public:
+	Laser(unsigned int x, unsigned int y);
+	Laser(Laser const &laser);
+	~Laser() override;
 
-    public:
-		Laser( unsigned int x, unsigned int y, unsigned int hp, double speed );
-		Laser( Laser const & laser );
-		~Laser( void );
-		bool 	operator==( Ufo const & ufo );
-		Laser*	getNext() const;
+	Laser &operator=(Laser const &laser);
 
-        // void virtual		update( void );
-        // void virtual		die( void );
-
-		void virtual		printForTest( void );
-
-
-    protected:
-		Laser( void );
-		Ufo &	operator=( Ufo const & ufo );
-
-	private:
-		Laser*	_next;
-
+	void update(Executor &executor) override;
+	void draw(WINDOW *game, WINDOW *info) override;
 };
 
 #endif
