@@ -32,6 +32,6 @@ void Spawner::update(Executor &executor) {
 		if ((x % 3) == 0)
 			executor.push(new Star(x));
 		else
-			executor.push(new Weak(x, 1, 1, 0.8f, 2));
+			executor.push(new Weak(x, 1, 1, 0.6f, 2));
 	}
 }
