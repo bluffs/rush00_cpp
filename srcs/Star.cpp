@@ -1,5 +1,8 @@
 #include "Star.hpp"
 
+Star::Star()
+{}
+
 Star::Star(unsigned x)
 	: Background(x, 0.1f) { }
 

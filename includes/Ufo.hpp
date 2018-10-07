@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:45:08 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 21:25:07 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 22:17:48 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class Executor;
 class Ufo {
 
 public:
+	Ufo();
 	Ufo(unsigned int x, unsigned int y, unsigned int hp, double speed);
 	Ufo(Ufo const &ufo);
 	virtual ~Ufo();

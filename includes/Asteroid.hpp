@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Asteroid.hp                                        :+:      :+:    :+:   */
+/*   Asteroid.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:46:39 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 14:46:40 by hpelat           ###   ########.fr       */
+/*   Updated: 2018/10/07 22:11:02 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 class Asteroid : public Background {
 public:
+	Asteroid();
 	Asteroid(unsigned x);
 	Asteroid(Asteroid const &asteroid);
 	~Asteroid();

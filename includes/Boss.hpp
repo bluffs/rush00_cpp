@@ -6,6 +6,7 @@
 
 class Boss : public Enemy {
 public:
+	Boss();
 	Boss(unsigned int x, unsigned int y, unsigned int hp, double speed,
 		 double shoot_freq);
 	Boss(Boss const &weak);

@@ -6,12 +6,15 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 15:51:10 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 19:26:25 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 22:20:35 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "EnemyLaser.hpp"
 #include "Executor.hpp"
+
+EnemyLaser::EnemyLaser()
+{}
 
 EnemyLaser::EnemyLaser(unsigned int x, unsigned y, double speed)
 	: Enemy(x, y, 1, speed, 0) { }

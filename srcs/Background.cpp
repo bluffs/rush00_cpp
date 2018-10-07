@@ -1,5 +1,8 @@
 #include "Background.hpp"
 
+Background::Background()
+{}
+
 Background::Background(unsigned x, double speed)
 	: Ufo(x, 1, 0, speed) { }
 

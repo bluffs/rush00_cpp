@@ -6,11 +6,14 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:52:51 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 20:25:12 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 22:16:36 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Laser.hpp"
+
+Laser::Laser()
+{}
 
 Laser::Laser(unsigned int x, unsigned int y)
 	: Ufo(x, y, 1, 0.05f) { }

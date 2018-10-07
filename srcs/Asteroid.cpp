@@ -1,5 +1,8 @@
 #include "Asteroid.hpp"
 
+Asteroid::Asteroid()
+{
+}
 Asteroid::Asteroid(unsigned x)
 	: Background(x, 0.15f) { }
 

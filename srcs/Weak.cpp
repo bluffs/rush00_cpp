@@ -6,13 +6,16 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 15:51:10 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 20:03:53 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 22:18:57 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weak.hpp"
 #include "Executor.hpp"
 #include "EnemyLaser.hpp"
+
+Weak::Weak()
+{}
 
 Weak::Weak(unsigned int x, unsigned y, unsigned int hp, double speed,
 		   double shoot_freq)

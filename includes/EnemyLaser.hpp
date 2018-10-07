@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 15:51:20 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 15:51:23 by hpelat           ###   ########.fr       */
+/*   Updated: 2018/10/07 22:14:40 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 class EnemyLaser : public Enemy {
 public:
+	EnemyLaser();
 	EnemyLaser(unsigned int x, unsigned int y, double speed);
 	EnemyLaser(EnemyLaser const &weak);
 	~EnemyLaser();

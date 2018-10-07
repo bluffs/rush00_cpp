@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:46:39 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 14:46:40 by hpelat           ###   ########.fr       */
+/*   Updated: 2018/10/07 22:11:39 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 class Background : public Ufo {
 public:
+	Background();
 	Background(unsigned x, double speed);
 	Background(Background const &background);
 	~Background();

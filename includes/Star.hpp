@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:46:39 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 14:46:40 by hpelat           ###   ########.fr       */
+/*   Updated: 2018/10/07 22:17:15 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 class Star : public Background {
 public:
+	Star();
 	Star(unsigned x);
 	Star(Star const &star);
 	~Star();

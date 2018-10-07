@@ -6,11 +6,14 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:52:30 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 21:25:49 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 22:18:07 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ufo.hpp"
+
+Ufo::Ufo()
+{}
 
 Ufo::Ufo( unsigned int x, unsigned int y, unsigned int hp, double speed ) :
 	_x(x),

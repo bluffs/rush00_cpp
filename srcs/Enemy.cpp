@@ -6,11 +6,14 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:52:44 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 21:22:15 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 22:14:15 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Enemy.hpp"
+
+Enemy::Enemy()
+{}
 
 Enemy::Enemy(unsigned int x, unsigned y, unsigned int hp, double speed,
 			 double shoot_freq)

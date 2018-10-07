@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:46:51 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 18:37:01 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 22:16:42 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 class Laser : public Ufo {
 public:
+	Laser();
 	Laser(unsigned int x, unsigned int y);
 	Laser(Laser const &laser);
 	~Laser();
