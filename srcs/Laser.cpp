@@ -6,14 +6,14 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:52:51 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 18:38:11 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 20:25:12 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Laser.hpp"
 
 Laser::Laser(unsigned int x, unsigned int y)
-	: Ufo(x, y, 1, 0.1f) { }
+	: Ufo(x, y, 1, 0.05f) { }
 
 Laser::Laser(Laser const &laser)
 	: Ufo(laser) { }
@@ -40,5 +40,7 @@ void Laser::update(Executor &executor) {
 
 void Laser::draw(WINDOW *game, WINDOW *info) {
 	(void)info;
+	wattron(game, COLOR_PAIR(4));
 	mvwprintw(game, getPosY(), getPosX(), "'");
+	wattroff(game, COLOR_PAIR(4));
 }

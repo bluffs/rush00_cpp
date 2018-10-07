@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:52:38 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 18:09:30 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 19:29:33 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ void Player::onAction(Executor &executor, int ch) {
 
 void Player::draw(WINDOW *game, WINDOW *info) {
 	(void)info;
+	wattron(game, COLOR_PAIR(3));
 	mvwprintw(game, getPosY(), getPosX(), "^");
+	wattroff(game, COLOR_PAIR(3));
 }

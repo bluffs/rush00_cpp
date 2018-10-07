@@ -6,7 +6,7 @@
 /*   By: jyakdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 18:43:10 by jyakdi            #+#    #+#             */
-/*   Updated: 2018/10/06 18:46:04 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 20:53:42 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,6 @@
 #define GAMEH 80
 #define INFOW 50
 #define INFOH 40
+#define ABS(a) (a >= 0 ? a : -a)
 
 #endif

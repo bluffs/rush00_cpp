@@ -20,6 +20,9 @@ Executor::Executor()
 	curs_set(0);
 	start_color();
 	init_pair(1, COLOR_RED, COLOR_BLACK);
+	init_pair(2, COLOR_MAGENTA, COLOR_BLACK);
+	init_pair(3, COLOR_GREEN, COLOR_BLACK);
+	init_pair(4, COLOR_CYAN, COLOR_BLACK);
 
 	_game = newwin(GAMEH, GAMEW, 0, 0);
 	_info = newwin(INFOH, INFOW, 0, 150);

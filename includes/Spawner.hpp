@@ -16,6 +16,9 @@ public:
 private:
 	double _frequency;
 	clock_t _last;
+	clock_t _start;
+	double _bossCall;
+	bool _boss;
 };
 
 #endif

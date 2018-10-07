@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 15:51:10 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 09:38:21 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 20:03:53 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ Weak &Weak::operator=(Weak const &weak) {
 
 void Weak::draw(WINDOW *game, WINDOW *info) {
 	(void)info;
+	wattron(game, COLOR_PAIR(1));
 	mvwprintw(game, getPosY(), getPosX(), "V");
+	wattroff(game, COLOR_PAIR(1));
 }
 
 void Weak::update(Executor &executor) {

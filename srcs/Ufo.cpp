@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:52:30 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 12:49:32 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 21:03:30 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,10 @@ Ufo &		Ufo::operator=( Ufo const & ufo ) {
 	return (*this);
 }
 
-#define ABS(a) (a >= 0 ? a : -a)
-
 bool		Ufo::operator==( Ufo const & ufo ) {
 
-	if (ABS(this->getPosX() - ufo.getPosX()) <= _size)
-		return (ABS(this->getPosY() - ufo.getPosY()) <= _size);
+	if (ABS(this->getPosX() - ufo.getPosX()) < _size)
+		return (ABS(this->getPosY() - ufo.getPosY()) < _size);
 	return (false);
 }
 
@@ -110,7 +108,7 @@ void Ufo::setSize(unsigned int _size) {
 }
 
 bool Ufo::collide(Ufo const *ufo) {
-	if (ABS(this->getPosX() - ufo->getPosX()) <= _size)
-		return (ABS(this->getPosY() - ufo->getPosY()) <= _size);
+	if (ABS(this->getPosX() - ufo->getPosX()) < ufo->_size)
+		return (ABS(this->getPosY() - ufo->getPosY()) < _size);
 	return (false);
 }

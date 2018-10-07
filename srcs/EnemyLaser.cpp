@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 15:51:10 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 09:38:21 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 19:26:25 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ EnemyLaser &EnemyLaser::operator=(EnemyLaser const &weak) {
 
 void EnemyLaser::draw(WINDOW *game, WINDOW *info) {
 	(void)info;
+	wattron(game, COLOR_PAIR(2));
 	mvwprintw(game, getPosY(), getPosX(), "*");
+	wattroff(game, COLOR_PAIR(2));
 }
 
 void EnemyLaser::update(Executor &executor) {
