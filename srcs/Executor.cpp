@@ -90,7 +90,7 @@ void Executor::checkDie() {
 			x > GAMEW - 2 || x < 1 ||
 			y > GAMEH - 2 || y < 1) {
 			if (tmpLaser == tmpLaserFirst)
-				_enemy = dynamic_cast<Enemy *>(tmpLaser->getNext());
+				_laser = dynamic_cast<Laser *>(tmpLaser->getNext());
 			else {
 				tmpLaserFirst->setNext(tmpLaser->getNext());
 				delete tmpLaser;
