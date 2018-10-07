@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:52:44 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 11:51:10 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 21:22:15 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ Enemy &Enemy::operator=(Enemy const &enemy) {
 	return *this;
 }
 
-void	Enemy::die( void ) {
-
+bool	Enemy::die( void ) {
+	return 0;
 }

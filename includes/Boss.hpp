@@ -15,6 +15,7 @@ public:
 
 	void draw(WINDOW *game, WINDOW *info);
 	void update(Executor &executor);
+	virtual bool die();
 
 private:
 	int	_side;

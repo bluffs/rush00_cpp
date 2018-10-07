@@ -8,7 +8,7 @@ RM   = rm -rf
 INC_DIR = includes
 SRC_DIR = srcs
 
-CFLAGS  = -Wall -Wextra #-Werror
+CFLAGS  = -Wall -Wextra -Werror
 LDFLAGS =
 LDLIBS  = ncurses
 

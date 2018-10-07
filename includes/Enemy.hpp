@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:46:27 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 12:05:14 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 21:21:33 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ public:
 
 	Enemy &operator=(Enemy const &enemy);
 
-	void die();
+	virtual bool die();
 
 private:
 	double _shoot_freq;

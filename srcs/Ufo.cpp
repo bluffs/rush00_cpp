@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:52:30 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 21:03:30 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 21:25:49 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ void Ufo::setNext(Ufo *next) {
 	Ufo::_next = next;
 }
 
-void Ufo::die() {
-
+bool Ufo::die() {
+	return 0;
 }
 
 void Ufo::setSize(unsigned int _size) {

@@ -37,6 +37,7 @@ public:
 	void push(Enemy *enemy);
 	void push(Laser *laser);
 	void push(Background *background);
+	void printScore();
 };
 
 #endif

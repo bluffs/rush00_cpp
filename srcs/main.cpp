@@ -18,7 +18,10 @@ int main() {
 		exec.update();
 		exec.checkCollision();
 		if (exec.checkDie())
+		{
+			exec.printScore();
 			return 0;
+		}
 		exec.draw();
 	}
 

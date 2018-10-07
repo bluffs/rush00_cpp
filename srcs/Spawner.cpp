@@ -8,7 +8,7 @@
 #include <cstdlib>
 
 Spawner::Spawner()
-	: Ufo(1, 0, 0, 0), _frequency(0.1f), _last(clock()), _start(clock()), _bossCall(5), _boss(false) { }
+	: Ufo(1, 0, 0, 0), _frequency(0.5f), _last(clock()), _start(clock()), _bossCall(50), _lvlUpCall(20), _boss(false), _lvlUp(false) { }
 
 Spawner::Spawner(Spawner const &spawner)
 	: Ufo(spawner), _frequency(spawner._frequency) { }
@@ -23,7 +23,8 @@ Spawner &Spawner::operator=(Spawner const &spawner) {
 
 void Spawner::update(Executor &executor) {
 	clock_t now = clock();
-	double delay = (now - _last) / (CLOCKS_PER_SEC);
+	double delay = (now - _last);
+	delay = delay / (CLOCKS_PER_SEC);
 	double total = (now - _start) / (CLOCKS_PER_SEC);
 
 	if (total >= _bossCall)
@@ -34,6 +35,14 @@ void Spawner::update(Executor &executor) {
 			_boss = true;
 		}
 		return ;
+	}
+	if (total >= _lvlUpCall)
+	{
+		if (!_lvlUp)
+		{
+			_lvlUp = true;
+			_frequency = 0.2f;
+		}
 	}
 
 	if (delay >= _frequency) {

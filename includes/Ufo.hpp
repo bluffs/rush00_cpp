@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:45:08 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 21:04:36 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 21:25:07 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ public:
 	virtual void update(Executor &executor);
 	virtual void draw(WINDOW *game, WINDOW *info);
 	virtual void takeDamage(unsigned int dmg);
-	virtual void die();
+	virtual bool die();
 
 	Ufo &operator=(Ufo const &ufo);
 	virtual bool operator==(Ufo const &ufo);

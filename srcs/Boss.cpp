@@ -53,3 +53,8 @@ void Boss::update(Executor &executor) {
 
 	}
 }
+
+bool Boss::die()
+{
+	return 1;
+}

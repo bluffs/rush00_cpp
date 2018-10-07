@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unistd.h>
 
 #include "Executor.hpp"
 #include "tools.hpp"
@@ -23,6 +24,7 @@ Executor::Executor()
 	init_pair(2, COLOR_MAGENTA, COLOR_BLACK);
 	init_pair(3, COLOR_GREEN, COLOR_BLACK);
 	init_pair(4, COLOR_CYAN, COLOR_BLACK);
+	init_pair(5, COLOR_YELLOW, COLOR_BLACK);
 
 	_game = newwin(GAMEH, GAMEW, 0, 0);
 	_info = newwin(INFOH, INFOW, 0, 150);
@@ -83,6 +85,10 @@ bool Executor::checkDie() {
 		if (tmpEnemy->getHp() <= 0 ||
 			x > GAMEW - 2 || x < 1 ||
 			y > GAMEH - 2 || y < 1) {
+			if (tmpEnemy->die())
+			{
+				return 1;
+			}
 			if (tmpEnemy->getHp() <= 0)
 				++_score;
 			if (tmpEnemy == tmpEnemyFirst)
@@ -153,7 +159,9 @@ void Executor::draw() {
 	wattron(_info, COLOR_PAIR(1));
 	mvwprintw(_info, 6, 2, "Health Point : %u", _player->getHp());
 	wattroff(_info, COLOR_PAIR(1));
+	wattron(_info, COLOR_PAIR(5));
 	mvwprintw(_info, 12, 2, "Score : %u", _score);
+	wattroff(_info, COLOR_PAIR(5));
 	mvwprintw(_info, 18, 1, "------------------------------------------------");
 	mvwprintw(_info, 20, INFOW / 2 - 5, "Commandes");
 	mvwprintw(_info, 22, 1, "------------------------------------------------");
@@ -223,4 +231,13 @@ void Executor::push(Laser *laser) {
 void Executor::push(Background *background) {
 	background->setNext(_background);
 	_background = background;
+}
+
+void Executor::printScore()
+{
+	wattron(_game, COLOR_PAIR(1));
+	mvwprintw(_game, GAMEH / 2, GAMEW / 2, "GAME OVER");
+	wattroff(_game, COLOR_PAIR(1));
+	wrefresh(_game);
+	sleep(5);
 }

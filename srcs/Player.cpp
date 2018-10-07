@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:52:38 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 19:29:33 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 21:44:15 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Player.hpp"
 
 Player::Player()
-	: Ufo(50, 25, 3, 0) { }
+	: Ufo(GAMEW / 2, GAMEH - 10, 3, 0) { }
 
 Player::Player(Player const &player)
 	: Ufo(player) { }

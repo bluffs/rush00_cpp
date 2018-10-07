@@ -18,7 +18,9 @@ private:
 	clock_t _last;
 	clock_t _start;
 	double _bossCall;
+	double _lvlUpCall;
 	bool _boss;
+	bool _lvlUp;
 };
 
 #endif
