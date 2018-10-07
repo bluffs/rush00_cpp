@@ -18,6 +18,8 @@ Executor::Executor()
 	cbreak();
 	keypad(stdscr, TRUE);
 	curs_set(0);
+	start_color();
+	init_pair(1, COLOR_RED, COLOR_BLACK);
 
 	_game = newwin(GAMEH, GAMEW, 0, 0);
 	_info = newwin(INFOH, INFOW, 0, 150);
@@ -145,12 +147,17 @@ void Executor::draw() {
 	box(_info, 0, 0);
 
 
-	mvwprintw(_info, 10, 2, "Health Point : %u", _player->getHp());
-	mvwprintw(_info, 16, 2, "Score : %u", _score);
-	mvwprintw(_info, 20, INFOW / 2, "Commandes");
-	mvwprintw(_info, 22, 2, "Quit : q");
-	mvwprintw(_info, 24, 2, "Move : arrows");
-	mvwprintw(_info, 24, 2, "Shoot : spacebar");
+	wattron(_info, COLOR_PAIR(1));
+	mvwprintw(_info, 6, 2, "Health Point : %u", _player->getHp());
+	wattroff(_info, COLOR_PAIR(1));
+	mvwprintw(_info, 12, 2, "Score : %u", _score);
+	mvwprintw(_info, 18, 1, "------------------------------------------------");
+	mvwprintw(_info, 20, INFOW / 2 - 5, "Commandes");
+	mvwprintw(_info, 22, 1, "------------------------------------------------");
+
+	mvwprintw(_info, 26, 2, "Quit : q");
+	mvwprintw(_info, 28, 2, "Move : arrows");
+	mvwprintw(_info, 30, 2, "Shoot : spacebar");
 
 	for (Ufo *ufo = _background; ufo; ufo = ufo->getNext())
 		ufo->draw(_game, _info);
