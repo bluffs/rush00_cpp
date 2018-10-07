@@ -29,7 +29,7 @@ NAME_BIN := $(NAME)$(NAME_SUFFIX)
 INC = $(INC_DIR)
 SRC = main.cpp \
       Executor.cpp Player.cpp Ufo.cpp Laser.cpp Enemy.cpp Weak.cpp \
-      Spawner.cpp Background.cpp Star.cpp Asteroid.cpp
+      Spawner.cpp Background.cpp Star.cpp Asteroid.cpp EnemyLaser.cpp
 
 V ?= @
 

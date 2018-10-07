@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weak.cpp                                           :+:      :+:    :+:   */
+/*   EnemyLaser.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,30 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weak.hpp"
-#include "Executor.hpp"
 #include "EnemyLaser.hpp"
+#include "Executor.hpp"
 
-Weak::Weak(unsigned int x, unsigned y, unsigned int hp, double speed,
-		   double shoot_freq)
-	: Enemy(x, y, hp, speed, shoot_freq) { }
+EnemyLaser::EnemyLaser(unsigned int x, unsigned y, double speed)
+	: Enemy(x, y, 1, speed, 0) { }
 
-Weak::Weak(Weak const &weak)
+EnemyLaser::EnemyLaser(EnemyLaser const &weak)
 	: Enemy(weak) { }
 
-Weak::~Weak() { };
+EnemyLaser::~EnemyLaser() { };
 
-Weak &Weak::operator=(Weak const &weak) {
+EnemyLaser &EnemyLaser::operator=(EnemyLaser const &weak) {
 	*(Enemy *)this = (Enemy &)weak;
 	return *this;
 }
 
-void Weak::draw(WINDOW *game, WINDOW *info) {
+void EnemyLaser::draw(WINDOW *game, WINDOW *info) {
 	(void)info;
-	mvwprintw(game, getPosY(), getPosX(), "V");
+	mvwprintw(game, getPosY(), getPosX(), "*");
 }
 
-void Weak::update(Executor &executor) {
+void EnemyLaser::update(Executor &executor) {
 	clock_t now = clock();
 
 	(void)executor;
@@ -43,8 +41,5 @@ void Weak::update(Executor &executor) {
 	if (delay >= _speed) {
 		++_y;
 		_last = now;
-		if ((_y % 3) == 0)
-			executor.push(
-				new EnemyLaser(getPosX(), getPosY() + 1, _speed / 10));
 	}
 }

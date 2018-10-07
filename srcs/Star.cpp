@@ -15,5 +15,5 @@ Star &Star::operator=(Star const &star) {
 
 void Star::draw(WINDOW *game, WINDOW *info) {
 	(void)info;
-	mvwprintw(game, getPosY(), getPosX(), "*");
+	mvwprintw(game, getPosY(), getPosX(), ".");
 }
