@@ -31,7 +31,7 @@ void Spawner::update(Executor &executor) {
 	{
 		if (!_boss)
 		{
-			executor.push(new Boss(GAMEW / 2, 1, 50, 0.4f, 1));
+			executor.push(new Boss(GAMEW / 2, 1, 50, 0.2f, 1));
 			_boss = true;
 		}
 		return ;
