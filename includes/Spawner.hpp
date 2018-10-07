@@ -7,11 +7,11 @@ class Spawner : public Ufo {
 public:
 	Spawner();
 	Spawner(Spawner const &spawner);
-	~Spawner() override;
+	~Spawner();
 
 	Spawner &operator=(Spawner const &spawner);
 
-	void update(Executor &executor) override;
+	void update(Executor &executor);
 
 private:
 	double _frequency;

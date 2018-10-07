@@ -18,7 +18,7 @@ Laser::Laser(unsigned int x, unsigned int y)
 Laser::Laser(Laser const &laser)
 	: Ufo(laser) { }
 
-Laser::~Laser() = default;
+Laser::~Laser() { };
 
 Laser &Laser::operator=(Laser const &laser) {
 	*(Ufo *)this = (Ufo &)laser;

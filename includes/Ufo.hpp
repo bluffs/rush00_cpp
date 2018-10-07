@@ -45,14 +45,13 @@ public:
 	virtual Ufo &operator=(Ufo const &ufo);
 	virtual bool operator==(Ufo const &ufo);
 
-private:
-	unsigned int _x;
-	unsigned int _hp;
-	Ufo *_next;
 protected:
-	double _speed;
-	clock_t _last;
+	unsigned int _x;
 	unsigned int _y;
+	unsigned int _hp;
+	clock_t _last;
+	double _speed;
+	Ufo *_next;
 };
 
 #endif

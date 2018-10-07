@@ -20,12 +20,12 @@ public:
 	Weak(unsigned int x, unsigned int y, unsigned int hp, double speed,
 		 double shoot_freq);
 	Weak(Weak const &weak);
-	~Weak() override;
+	~Weak();
 
 	Weak &operator=(Weak const &enemy);
 
-	void draw(WINDOW *game, WINDOW *info) override;
-	void update(Executor &executor) override;
+	void draw(WINDOW *game, WINDOW *info);
+	void update(Executor &executor);
 };
 
 #endif

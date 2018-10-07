@@ -19,7 +19,7 @@ Weak::Weak(unsigned int x, unsigned y, unsigned int hp, double speed,
 Weak::Weak(Weak const &weak)
 	: Enemy(weak) { }
 
-Weak::~Weak() = default;
+Weak::~Weak() { };
 
 void Weak::draw(WINDOW *game, WINDOW *info) {
 	(void)info;

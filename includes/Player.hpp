@@ -19,12 +19,12 @@ class Player : public Ufo {
 public:
 	Player();
 	Player(Player const &player);
-	~Player() override;
+	~Player();
 
 	Player &operator=(Player const &player);
 
 	void onAction(Executor &executor, int ch);
-	void draw(WINDOW *game, WINDOW *info) override;
+	void draw(WINDOW *game, WINDOW *info);
 };
 
 #endif

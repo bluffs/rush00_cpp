@@ -1,8 +1,8 @@
 #include "Spawner.hpp"
 #include "Weak.hpp"
-#include "tools.hpp"
 #include "Executor.hpp"
-#include <ctime>
+
+#include <cstdlib>
 
 Spawner::Spawner()
 	: Ufo(0, 0, 0, 0), _frequency(1.f) { }
@@ -10,7 +10,7 @@ Spawner::Spawner()
 Spawner::Spawner(Spawner const &spawner)
 	: Ufo(spawner), _frequency(spawner._frequency) { }
 
-Spawner::~Spawner() = default;
+Spawner::~Spawner() { };
 
 Spawner &Spawner::operator=(Spawner const &spawner) {
 	*(Ufo *)this = (Ufo &)spawner;

@@ -5,9 +5,9 @@
 
 Executor::Executor()
 	: _player(new Player()),
-	  _enemy(nullptr),
-	  _laser(nullptr),
 	  _spawner(new Spawner()),
+	  _enemy(NULL),
+	  _laser(NULL),
 	  _start(clock()) {
 	std::cout << "executor default constructor" << std::endl;
 
@@ -68,6 +68,8 @@ void Executor::checkDie() {
 		unsigned y = tmpEnemy->getPosY();
 
 		if (tmpEnemy->getHp() <= 0 ||
+
+
 			x > GAMEW - 2 || x < 1 ||
 			y > GAMEH - 2 || y < 1) {
 			if (tmpEnemy == tmpEnemyFirst)

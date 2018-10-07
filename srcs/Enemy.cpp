@@ -19,7 +19,7 @@ Enemy::Enemy(unsigned int x, unsigned y, unsigned int hp, double speed,
 Enemy::Enemy(Enemy const &enemy)
 	: Ufo(enemy), _shoot_freq(enemy._shoot_freq) { }
 
-Enemy::~Enemy() = default;
+Enemy::~Enemy() { };
 
 Enemy &Enemy::operator=(Enemy const &enemy) {
 	*(Ufo *)this = (Ufo &)enemy;

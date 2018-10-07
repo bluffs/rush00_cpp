@@ -1,7 +1,8 @@
 .PHONY : all, clean, fclean, re, $(NAME)
 
-CXX  = clang++
-LDXX = clang++
+STD  = c++98
+CXX  = clang++ -std=$(STD)
+LDXX = clang++ -std=$(STD)
 RM   = rm -rf
 
 INC_DIR = includes

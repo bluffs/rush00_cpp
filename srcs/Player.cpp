@@ -19,7 +19,7 @@ Player::Player()
 Player::Player(Player const &player)
 	: Ufo(player) { }
 
-Player::~Player() = default;
+Player::~Player() { };
 
 Player &Player::operator=(Player const &player) {
 	*(Ufo *)this = (Ufo &)player;

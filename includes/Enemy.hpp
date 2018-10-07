@@ -20,11 +20,11 @@ public:
 	Enemy(unsigned int x, unsigned int y, unsigned int hp, double speed,
 		  double shoot_freq);
 	Enemy(Enemy const &enemy);
-	~Enemy() override;
+	~Enemy();
 
 	Enemy &operator=(Enemy const &enemy);
 
-	void die() override;
+	void die();
 
 private:
 	double _shoot_freq;

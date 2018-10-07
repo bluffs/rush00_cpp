@@ -19,12 +19,12 @@ class Laser : public Ufo {
 public:
 	Laser(unsigned int x, unsigned int y);
 	Laser(Laser const &laser);
-	~Laser() override;
+	~Laser();
 
 	Laser &operator=(Laser const &laser);
 
-	void update(Executor &executor) override;
-	void draw(WINDOW *game, WINDOW *info) override;
+	void update(Executor &executor);
+	void draw(WINDOW *game, WINDOW *info);
 };
 
 #endif
