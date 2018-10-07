@@ -28,11 +28,13 @@ public:
 
 	void update();
 	void checkCollision();
-	void checkDie();
+	bool checkDie();
 	void draw();
+	void drawEnemy();
 	Player &getPlayer();
 	void push(Enemy *enemy);
 	void push(Laser *laser);
+	void delwindow();
 };
 
 #endif

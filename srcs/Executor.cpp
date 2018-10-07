@@ -57,11 +57,16 @@ void Executor::checkCollision() {
 	}
 }
 
-void Executor::checkDie() {
+bool Executor::checkDie() {
 	Enemy *tmpEnemy = _enemy;
 	Enemy *tmpEnemyFirst = _enemy;
 	Laser *tmpLaser = _laser;
 	Laser *tmpLaserFirst = _laser;
+
+	if (_player->getHp() <= 0)
+	{
+		return 1;
+	}
 
 	while (tmpEnemy) {
 		unsigned x = tmpEnemy->getPosX();
@@ -103,6 +108,7 @@ void Executor::checkDie() {
 		}
 		tmpLaser = dynamic_cast<Laser *>(tmpLaser->getNext());
 	}
+	return 0;
 }
 
 Player &Executor::getPlayer() {
@@ -136,7 +142,6 @@ Executor::Executor(Executor const &exe) {
 }
 
 Executor &Executor::operator=(Executor const &exe) {
-	//TODO
 	return *this;
 	(void)exe;
 }

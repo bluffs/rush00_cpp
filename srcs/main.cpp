@@ -5,6 +5,7 @@
 #include "Executor.hpp"
 
 int main() {
+	srand(time(0));
 	Executor exec;
 	int ch;
 	Player &player = exec.getPlayer();
@@ -14,7 +15,8 @@ int main() {
 		if (ch) player.onAction(exec, ch);
 		exec.update();
 		exec.checkCollision();
-		exec.checkDie();
+		if (exec.checkDie())
+			return 0;
 		exec.draw();
 	}
 
