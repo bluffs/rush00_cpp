@@ -8,16 +8,18 @@
 #include "Enemy.hpp"
 #include "Laser.hpp"
 #include "Spawner.hpp"
+#include "Background.hpp"
 
 class Executor {
 private:
-	Player	*_player;
-	Spawner	*_spawner;
-	Enemy	* _enemy;
-	Laser	*_laser;
-	WINDOW	*_info;
-	WINDOW	*_game;
-	clock_t	_start;
+	Player		*_player;
+	Spawner		*_spawner;
+	Enemy		* _enemy;
+	Laser		*_laser;
+	Background	*_background;
+	WINDOW		*_info;
+	WINDOW		*_game;
+	clock_t		_start;
 
 	Executor(Executor const &exe);
 	Executor &operator=(Executor const &exe);
@@ -30,11 +32,10 @@ public:
 	void checkCollision();
 	bool checkDie();
 	void draw();
-	void drawEnemy();
 	Player &getPlayer();
 	void push(Enemy *enemy);
 	void push(Laser *laser);
-	void delwindow();
+	void push(Background *background);
 };
 
 #endif

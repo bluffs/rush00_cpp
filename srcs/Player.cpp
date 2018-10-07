@@ -55,5 +55,5 @@ void Player::onAction(Executor &executor, int ch) {
 
 void Player::draw(WINDOW *game, WINDOW *info) {
 	(void)info;
-	mvwprintw(game, getPosY(), getPosX(), "^");
+	mvwprintw(game, getPosY() + 1, getPosX(), "^");
 }

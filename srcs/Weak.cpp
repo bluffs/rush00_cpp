@@ -21,14 +21,14 @@ Weak::Weak(Weak const &weak)
 
 Weak::~Weak() { };
 
-void Weak::draw(WINDOW *game, WINDOW *info) {
-	(void)info;
-	mvwprintw(game, getPosY(), getPosX(), "V");
-}
-
 Weak &Weak::operator=(Weak const &weak) {
 	*(Enemy *)this = (Enemy &)weak;
 	return *this;
+}
+
+void Weak::draw(WINDOW *game, WINDOW *info) {
+	(void)info;
+	mvwprintw(game, getPosY(), getPosX(), "V");
 }
 
 void Weak::update(Executor &executor) {

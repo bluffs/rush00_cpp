@@ -1,14 +1,16 @@
 #include <iostream>
 #include <ctime>
 #include <unistd.h>
+#include <cstdlib>
 
 #include "Executor.hpp"
 
 int main() {
-	srand(time(0));
 	Executor exec;
 	int ch;
+
 	Player &player = exec.getPlayer();
+	srand(static_cast<unsigned int>(time(NULL)));
 
 	while ((ch = getch()) != 27) {
 		if (ch == 'q' || ch == KEY_EXIT) break;

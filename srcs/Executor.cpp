@@ -8,6 +8,7 @@ Executor::Executor()
 	  _spawner(new Spawner()),
 	  _enemy(NULL),
 	  _laser(NULL),
+	  _background(NULL),
 	  _start(clock()) {
 	std::cout << "executor default constructor" << std::endl;
 
@@ -23,6 +24,8 @@ Executor::Executor()
 
 void Executor::update() {
 	_spawner->update(*this);
+	for (Ufo *ufo = _background; ufo; ufo = ufo->getNext())
+		ufo->update(*this);
 	for (Ufo *ufo = _laser; ufo; ufo = ufo->getNext())
 		ufo->update(*this);
 	for (Ufo *ufo = _enemy; ufo; ufo = ufo->getNext())
@@ -62,6 +65,8 @@ bool Executor::checkDie() {
 	Enemy *tmpEnemyFirst = _enemy;
 	Laser *tmpLaser = _laser;
 	Laser *tmpLaserFirst = _laser;
+	Background *tmpBg = _background;
+	Background *tmpBgFirst = _background;
 
 	if (_player->getHp() <= 0)
 	{
@@ -108,6 +113,24 @@ bool Executor::checkDie() {
 		}
 		tmpLaser = dynamic_cast<Laser *>(tmpLaser->getNext());
 	}
+	while (tmpBg) {
+		unsigned x = tmpBg->getPosX();
+		unsigned y = tmpBg->getPosY();
+
+		if (x > GAMEW - 2 || x < 1 ||
+			y > GAMEH - 2 || y < 1) {
+			if (tmpBg == tmpBgFirst)
+				_background = dynamic_cast<Background *>(tmpBg->getNext());
+			else {
+				tmpBgFirst->setNext(tmpBg->getNext());
+				delete tmpBg;
+				tmpBg = tmpBgFirst;
+			}
+		} else {
+			tmpBgFirst = tmpBg;
+		}
+		tmpBg = dynamic_cast<Background *>(tmpBg->getNext());
+	}
 	return 0;
 }
 
@@ -128,6 +151,8 @@ void Executor::draw() {
 	mvwprintw(_info, 24, 2, "Move : arrows");
 
 	_player->draw(_game, _info);
+	for (Ufo *ufo = _background; ufo; ufo = ufo->getNext())
+		ufo->draw(_game, _info);
 	for (Ufo *ufo = _enemy; ufo; ufo = ufo->getNext())
 		ufo->draw(_game, _info);
 	for (Ufo *ufo = _laser; ufo; ufo = ufo->getNext())
@@ -181,4 +206,9 @@ void Executor::push(Enemy *enemy) {
 void Executor::push(Laser *laser) {
 	laser->setNext(_laser);
 	_laser = laser;
+}
+
+void Executor::push(Background *background) {
+	background->setNext(_background);
+	_background = background;
 }
