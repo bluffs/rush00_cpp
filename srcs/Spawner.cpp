@@ -4,8 +4,8 @@
 #include <ctime>
 
 Spawner::Spawner() :
-	_last(clock()),
-	_frequency(2)
+	_frequency(0.5f),
+	_last(clock())
 {
 }
 
@@ -28,13 +28,14 @@ Spawner::~Spawner()
 Enemy*		Spawner::update()
 {
 	clock_t	now = clock();
-	double delay = (now - _last) / (CLOCKS_PER_SEC);
+	double delay = (now - _last);
+	delay = delay / CLOCKS_PER_SEC;
 
 	if (delay >= _frequency)
 	{
 		_last = now;
-		unsigned x = rand() % (GAMEW - 4) + 2;
-		return (new Weak(x, 2, 1, 1, 2));
+		unsigned x = rand() % (GAMEW - 2) + 1;
+		return (new Weak(x, 1, 1, 0.2f, 2));
 	}
 	return (NULL);
 }

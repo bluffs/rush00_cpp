@@ -18,7 +18,7 @@ class Executor
 		Laser*			_laser;
 		Spawner			_spawner;
 		clock_t			_start;
-		unsigned int	_score;
+		//unsigned int	_score;
 		WINDOW*			_game;
 		WINDOW*			_info;
 		Executor(Executor const & exe);

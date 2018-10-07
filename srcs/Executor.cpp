@@ -4,12 +4,12 @@
 #include "tools.hpp"
 
 Executor::Executor():
-	_start(clock()),
-	_game(newwin(GAMEH, GAMEW, 0, 0)),
-	_info(newwin(INFOH, INFOW, 0, 150)),
 	_player(new Player()),
 	_enemy(NULL),
-	_laser(NULL)
+	_laser(NULL),
+	_start(clock()),
+	_game(newwin(GAMEH, GAMEW, 0, 0)),
+	_info(newwin(INFOH, INFOW, 0, 150))
 {
 	std::cout << "executor default constructor" << std::endl;
 }
@@ -46,10 +46,91 @@ void	Executor::update()
 
 void	Executor::checkCollision()
 {
-	Enemy*	tmpEnemy;
-	Laser*	tmpLaser;
+	Enemy*	tmpEnemy = _enemy;
+	Laser*	tmpLaser = _laser;
+	unsigned int x = _player->getPosX();
+	unsigned int y = _player->getPosY();
 
-	//TODO
+	while (tmpEnemy)
+	{
+		if (x == tmpEnemy->getPosX() && y == tmpEnemy->getPosY())
+		{
+			_player->takeDamage(1);
+			tmpEnemy->takeDamage(1);
+		}
+		tmpEnemy = tmpEnemy->getNext();
+	}
+
+	while (tmpLaser)
+	{
+		if (x == tmpLaser->getPosX() && y == tmpLaser->getPosY())
+		{
+			_player->takeDamage(1);
+			tmpLaser->takeDamage(1);
+		}
+		tmpLaser = tmpLaser->getNext();
+	}
+}
+
+void	Executor::checkDie()
+{
+	Enemy*	tmpEnemy = _enemy;
+	Enemy*	tmpEnemyFirst = _enemy;
+	//Laser*	tmpLaser = _laser;
+	//Laser*	tmpLaserFirst = _laser;
+	
+	while (tmpEnemy)
+	{
+		unsigned x = tmpEnemy->getPosX();
+		unsigned y = tmpEnemy->getPosY();
+
+		if (tmpEnemy->getHp() <= 0 ||
+				x > GAMEW - 2 ||
+				x < 1 ||
+				y > GAMEH - 2 ||
+				y < 1)
+		{
+			if (tmpEnemy == tmpEnemyFirst)
+				_enemy = tmpEnemy->getNext();
+			else
+			{
+				tmpEnemyFirst->setNext(tmpEnemy->getNext());
+				delete tmpEnemy;
+				tmpEnemy = tmpEnemyFirst;
+			}
+		}
+		else
+		{
+			tmpEnemyFirst = tmpEnemy;
+		}
+		tmpEnemy = tmpEnemy->getNext();
+	}
+	/*while (tmpLaser)
+	{
+		unsigned x = tmpLaser->getPosX();
+		unsigned y = tmpLaser->getPosY();
+
+		if (tmpLaser->getHp() <= 0 ||
+				x > GAMEW - 2 ||
+				x < 1 ||
+				y > GAMEH - 2 ||
+				y < 1)
+		{
+			if (tmpLaser == tmpLaserFirst)
+				_enemy = tmpLaser->getNext();
+			else
+			{
+				tmpLaserFirst->setNext(tmpLaser->getNext());
+				delete tmpLaser;
+				tmpLaser = tmpLaserFirst;
+			}
+		}
+		else
+		{
+			tmpLaserFirst = tmpLaser;
+		}
+		tmpLaser = tmpLaser->getNext();
+	}*/
 }
 
 Player*		Executor::getPlayer() const
@@ -95,12 +176,14 @@ void		Executor::draw()
 
 Executor::Executor(Executor const & exe)
 {
+	(void)exe;
 }
 
 Executor&	Executor::operator=(Executor const & exe)
 {
 	//TODO
 	return *this;
+	(void)exe;
 }
 
 Executor::~Executor()

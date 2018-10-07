@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:46:27 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 10:01:02 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 12:05:14 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ class Enemy : public Ufo {
     public:
 		Enemy( unsigned int x, unsigned int y, unsigned int hp, double speed, double shoot_freq );
 		Enemy( Enemy const & enemy );
-		~Enemy( void );
+		virtual ~Enemy( void );
 		bool 	operator==( Ufo const & ufo );
 		Enemy*	getNext() const;
 		void	setNext(Enemy* enemy);
+		void	die( void  );
 
     protected:
 		Enemy( void );

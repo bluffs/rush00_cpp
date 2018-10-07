@@ -42,6 +42,8 @@ int main()
 				return 0;
 		}
 		exec.update();
+		exec.checkCollision();
+		exec.checkDie();
 		exec.draw();
 	}
 	return 0;

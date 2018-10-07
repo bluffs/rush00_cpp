@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:52:44 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 10:08:18 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 11:51:10 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,9 @@ Enemy*	Enemy::getNext() const
 void	Enemy::setNext(Enemy* enemy)
 {
 	_next = enemy;
+}
+
+void	Enemy::die( void )
+{
+
 }

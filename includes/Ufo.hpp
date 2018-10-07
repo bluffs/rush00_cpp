@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:45:08 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 18:58:57 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 11:46:39 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Ufo {
 
         void virtual		update( void );
         void virtual		takeDamage( unsigned int dmg );
-        // void virtual		die( void );
+        void virtual		die( void );
 
         void virtual		printForTest( void );
 
