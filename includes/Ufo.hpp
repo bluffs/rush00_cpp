@@ -36,13 +36,16 @@ public:
 	void setNext(Ufo *next);
 	void setX(unsigned int x);
 	void setY(unsigned int y);
+	void setSize(unsigned int _size);
+
+	bool collide(Ufo const *ufo);
 
 	virtual void update(Executor &executor);
 	virtual void draw(WINDOW *game, WINDOW *info);
 	virtual void takeDamage(unsigned int dmg);
 	virtual void die();
 
-	virtual Ufo &operator=(Ufo const &ufo);
+	Ufo &operator=(Ufo const &ufo);
 	virtual bool operator==(Ufo const &ufo);
 
 protected:
@@ -51,6 +54,7 @@ protected:
 	unsigned int _hp;
 	clock_t _last;
 	double _speed;
+	unsigned int _size;
 	Ufo *_next;
 };
 

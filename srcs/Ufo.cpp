@@ -17,9 +17,9 @@ Ufo::Ufo( unsigned int x, unsigned int y, unsigned int hp, double speed ) :
 	_y(y),
 	_hp(hp),
 	_last(clock()),
-	_speed(speed) {
-
-}
+	_speed(speed),
+	_size(1),
+	_next(NULL) { }
 
 Ufo::Ufo( Ufo const & ufo ) {
 
@@ -44,10 +44,12 @@ Ufo &		Ufo::operator=( Ufo const & ufo ) {
 	return (*this);
 }
 
+#define ABS(a) (a >= 0 ? a : -a)
+
 bool		Ufo::operator==( Ufo const & ufo ) {
 
-	if (this->getPosX() == ufo.getPosX())
-		return (this->getPosY() == ufo.getPosY());
+	if (ABS(this->getPosX() - ufo.getPosX()) <= _size)
+		return (ABS(this->getPosY() - ufo.getPosY()) <= _size);
 	return (false);
 }
 
@@ -101,4 +103,14 @@ void Ufo::setNext(Ufo *next) {
 
 void Ufo::die() {
 
+}
+
+void Ufo::setSize(unsigned int _size) {
+	Ufo::_size = _size;
+}
+
+bool Ufo::collide(Ufo const *ufo) {
+	if (ABS(this->getPosX() - ufo->getPosX()) <= _size)
+		return (ABS(this->getPosY() - ufo->getPosY()) <= _size);
+	return (false);
 }

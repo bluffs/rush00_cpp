@@ -36,11 +36,9 @@ void Executor::update() {
 void Executor::checkCollision() {
 	Enemy *tmpEnemy = _enemy;
 	Laser *tmpLaser = _laser;
-	unsigned int x = _player->getPosX();
-	unsigned int y = _player->getPosY();
 
 	while (tmpEnemy) {
-		if (x == tmpEnemy->getPosX() && y == tmpEnemy->getPosY()) {
+		if (_player->collide(tmpEnemy)) {
 			_player->takeDamage(1);
 			tmpEnemy->takeDamage(1);
 		}
@@ -50,8 +48,7 @@ void Executor::checkCollision() {
 	while (tmpLaser) {
 		tmpEnemy = _enemy;
 		while (tmpEnemy) {
-			if (tmpLaser->getPosX() == tmpEnemy->getPosX()
-				&& tmpLaser->getPosY() == tmpEnemy->getPosY()) {
+			if (tmpLaser->collide(tmpEnemy)) {
 				tmpEnemy->takeDamage(1);
 				tmpLaser->takeDamage(1);
 			}
@@ -79,8 +76,6 @@ bool Executor::checkDie() {
 		unsigned y = tmpEnemy->getPosY();
 
 		if (tmpEnemy->getHp() <= 0 ||
-
-
 			x > GAMEW - 2 || x < 1 ||
 			y > GAMEH - 2 || y < 1) {
 			if (tmpEnemy->getHp() <= 0)
