@@ -41,8 +41,8 @@ int main()
 				endwin();
 				return 0;
 		}
+		exec.update();
 		exec.draw();
 	}
-
 	return 0;
 }

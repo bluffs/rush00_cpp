@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:46:27 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 18:35:27 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 10:01:02 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class Enemy : public Ufo {
 		~Enemy( void );
 		bool 	operator==( Ufo const & ufo );
 		Enemy*	getNext() const;
+		void	setNext(Enemy* enemy);
 
     protected:
 		Enemy( void );

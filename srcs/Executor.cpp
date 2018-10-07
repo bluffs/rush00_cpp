@@ -7,7 +7,9 @@ Executor::Executor():
 	_start(clock()),
 	_game(newwin(GAMEH, GAMEW, 0, 0)),
 	_info(newwin(INFOH, INFOW, 0, 150)),
-	_player(new Player())
+	_player(new Player()),
+	_enemy(NULL),
+	_laser(NULL)
 {
 	std::cout << "executor default constructor" << std::endl;
 }
@@ -16,11 +18,22 @@ void	Executor::update()
 {
 	Enemy*	tmpEnemy;
 	Laser*	tmpLaser;
+	Enemy*	enemy = _spawner.update();
 
 	tmpEnemy = _enemy;
+	if (enemy && !tmpEnemy)
+	{
+		_enemy = enemy;
+		enemy = NULL;
+	}
 	while (tmpEnemy)
 	{
 		tmpEnemy->update();
+		if (enemy && !tmpEnemy->getNext())
+		{
+			tmpEnemy->setNext(enemy);
+			enemy = NULL;
+		}
 		tmpEnemy = tmpEnemy->getNext();
 	}
 	tmpLaser = _laser;
@@ -50,6 +63,17 @@ void		Executor::delwindow()
 	delwin(_info);
 }
 
+void		Executor::drawEnemy()
+{
+	Enemy* enemyTmp = _enemy;
+
+	while (enemyTmp)
+	{
+		mvwprintw(_game, enemyTmp->getPosY(), enemyTmp->getPosX(), "V");
+		enemyTmp = enemyTmp->getNext();
+	}
+}
+
 void		Executor::draw()
 {
 	delwindow();
@@ -61,6 +85,9 @@ void		Executor::draw()
 	mvwprintw(_info, 20, INFOW / 2, "Commandes");
 	mvwprintw(_info, 22, 2, "Quit : q");
 	mvwprintw(_info, 24, 2, "Move : arrows");
+
+	drawEnemy();
+
 	mvwprintw(_game, getPlayer()->getPosY(), getPlayer()->getPosX(), "^");
 	wrefresh(_game);
 	wrefresh(_info);

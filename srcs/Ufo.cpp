@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:52:30 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 19:33:13 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 10:59:47 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,10 @@ void		Ufo::update( void )
 {
 	clock_t now = clock();
 
-	double	delay = now - _last;
+	double	delay = (now - _last) / (CLOCKS_PER_SEC);
 	if (delay >= _speed)
 	{
-		--_y;
+		++_y;
 		_last = now;
 	}
 }

@@ -7,7 +7,7 @@
 #include "Player.hpp"
 #include "Enemy.hpp"
 #include "Laser.hpp"
-//#include "Spawner.hpp"
+#include "Spawner.hpp"
 
 
 class Executor
@@ -16,7 +16,7 @@ class Executor
 		Player* 		_player;
 		Enemy*			_enemy;
 		Laser*			_laser;
-		//Spawner			_spawner;
+		Spawner			_spawner;
 		clock_t			_start;
 		unsigned int	_score;
 		WINDOW*			_game;
@@ -31,6 +31,7 @@ class Executor
 		void		checkCollision();
 		void		checkDie();
 		void		draw();
+		void		drawEnemy();
 		Player*		getPlayer() const;
 		void		delwindow();
 };

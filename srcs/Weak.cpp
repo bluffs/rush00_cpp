@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 15:51:10 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 15:51:11 by hpelat           ###   ########.fr       */
+/*   Updated: 2018/10/07 09:38:21 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ Weak::Weak( Weak const & weak ) {
 		*this = weak;
 }
 
-Weak::Weak( unsigned int x, unsigned y, unsigned int hp, double speed, double shoot_freq ) : Enemy(x, y, hp, speed, shoot_freq ) {
+Weak::Weak( unsigned int x, unsigned y, unsigned int hp, double speed, double shoot_freq ) :
+	Enemy(x, y, hp, speed, shoot_freq ) {
 
 }
 

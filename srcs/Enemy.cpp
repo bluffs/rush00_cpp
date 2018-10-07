@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:52:44 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/06 18:35:25 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 10:08:18 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,9 @@ bool		Enemy::operator==( Ufo const & ufo ) {
 Enemy*	Enemy::getNext() const
 {
 	return _next;
+}
+
+void	Enemy::setNext(Enemy* enemy)
+{
+	_next = enemy;
 }
