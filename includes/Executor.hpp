@@ -12,14 +12,15 @@
 
 class Executor {
 private:
-	Player		*_player;
-	Spawner		*_spawner;
-	Enemy		* _enemy;
-	Laser		*_laser;
-	Background	*_background;
-	WINDOW		*_info;
-	WINDOW		*_game;
-	clock_t		_start;
+	Player			*_player;
+	Spawner			*_spawner;
+	Enemy			* _enemy;
+	Laser			*_laser;
+	Background		*_background;
+	WINDOW			*_info;
+	WINDOW			*_game;
+	clock_t			_start;
+	unsigned int	_score;
 
 	Executor(Executor const &exe);
 	Executor &operator=(Executor const &exe);

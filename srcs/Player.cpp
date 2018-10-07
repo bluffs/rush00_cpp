@@ -6,7 +6,7 @@
 /*   By: hpelat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 14:52:38 by hpelat            #+#    #+#             */
-/*   Updated: 2018/10/07 17:26:37 by jyakdi           ###   ########.fr       */
+/*   Updated: 2018/10/07 18:03:36 by jyakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void Player::onAction(Executor &executor, int ch) {
 				setY(getPosY() + 1);
 			break;
 		case ' ':
-			executor.push(new Laser(getPosX(), getPosY()));
+			executor.push(new Laser(getPosX(), getPosY() - 1));
 			break;
 		default:
 			break;
@@ -55,5 +55,5 @@ void Player::onAction(Executor &executor, int ch) {
 
 void Player::draw(WINDOW *game, WINDOW *info) {
 	(void)info;
-	mvwprintw(game, getPosY() + 1, getPosX(), "^");
+	mvwprintw(game, getPosY(), getPosX(), "^");
 }

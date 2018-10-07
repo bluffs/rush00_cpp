@@ -9,7 +9,8 @@ Executor::Executor()
 	  _enemy(NULL),
 	  _laser(NULL),
 	  _background(NULL),
-	  _start(clock()) {
+	  _start(clock()),
+	  _score(0) {
 	std::cout << "executor default constructor" << std::endl;
 
 	initscr();
@@ -82,6 +83,8 @@ bool Executor::checkDie() {
 
 			x > GAMEW - 2 || x < 1 ||
 			y > GAMEH - 2 || y < 1) {
+			if (tmpEnemy->getHp() <= 0)
+				++_score;
 			if (tmpEnemy == tmpEnemyFirst)
 				_enemy = dynamic_cast<Enemy *>(tmpEnemy->getNext());
 			else {
@@ -146,17 +149,21 @@ void Executor::draw() {
 	box(_game, 0, 0);
 	box(_info, 0, 0);
 
+
+	mvwprintw(_info, 10, 2, "Health Point : %u", _player->getHp());
+	mvwprintw(_info, 16, 2, "Score : %u", _score);
 	mvwprintw(_info, 20, INFOW / 2, "Commandes");
 	mvwprintw(_info, 22, 2, "Quit : q");
 	mvwprintw(_info, 24, 2, "Move : arrows");
+	mvwprintw(_info, 24, 2, "Shoot : spacebar");
 
-	_player->draw(_game, _info);
 	for (Ufo *ufo = _background; ufo; ufo = ufo->getNext())
-		ufo->draw(_game, _info);
-	for (Ufo *ufo = _enemy; ufo; ufo = ufo->getNext())
 		ufo->draw(_game, _info);
 	for (Ufo *ufo = _laser; ufo; ufo = ufo->getNext())
 		ufo->draw(_game, _info);
+	for (Ufo *ufo = _enemy; ufo; ufo = ufo->getNext())
+		ufo->draw(_game, _info);
+	_player->draw(_game, _info);
 
 	wrefresh(_game);
 	wrefresh(_info);
