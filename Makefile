@@ -1,31 +1,53 @@
-.PHONY : clean, fclean, re, $(NAME)
+.PHONY : all, clean, fclean, re, $(NAME)
 
-CC = clang++
+CXX  = clang++
+LDXX = clang++
+RM   = rm -rf
 
-OPTION = -c -I./includes
+INC_DIR = includes
+SRC_DIR = srcs
 
-FLAG = #-Wall -Werror -Wextra
+CFLAGS  = -Wall -Wextra #-Werror
+LDFLAGS =
+LDLIBS  = ncurses
 
-NCURSE = -lncurses
+ifneq ($(DEBUG),)
+  BUILD_DIR = build/debug
+  CFLAGS  += -g -O0 -fsanitize=address
+  LDFLAGS += -fsanitize=address
+  NAME_SUFFIX = -debug
+else
+  BUILD_DIR = build/release
+  CFLAGS  += -flto -O2
+  LDFLAGS += -flto
+endif
 
-NAME = ft_retro
+NAME      = ft_retro
+NAME_BIN := $(NAME)$(NAME_SUFFIX)
 
-SRC = main.cpp Executor.cpp Player.cpp Ufo.cpp Laser.cpp Enemy.cpp Weak.cpp
+INC = $(INC_DIR)
+SRC = main.cpp Executor.cpp Player.cpp Ufo.cpp Laser.cpp Enemy.cpp Weak.cpp Spawner.cpp
 
-OBJ = $(SRC:.cpp=.o)
+V ?= @
 
-all: $(NAME)
+all: $(NAME_BIN)
 
-$(NAME) : $(OBJ)
-	@$(CC) $(FLAG) -o $(NAME) $(OBJ) $(NCURSE)
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@echo "  CXX     $(notdir $<)"
+	@mkdir -p $(dir $@)
+	$(V)$(CXX) $< -c $(CFLAGS) $(addprefix -I,$(INC)) \
+		$(addprefix -D,$(DEF)) -MMD -MF $(@:.o=.d) -o $@
 
-$(OBJ): $(addprefix srcs/, $(SRC))
-	@$(CC) $(FLAG) $(OPTION) $(addprefix srcs/, $(SRC))
+$(NAME_BIN): $(SRC:%.cpp=$(BUILD_DIR)/%.o)
+	@echo "  LDXX    $(notdir $@)"
+	$(V)$(LDXX) $^ $(LDFLAGS) $(addprefix -l,$(LDLIBS)) -o $@
 
 clean:
-	@rm -rf $(OBJ)
+	@$(RM) $(BUILD_DIR)
 
 fclean: clean
-	@rm -rf $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
+
+-include $(SRC:%.cpp=$(BUILD_DIR)/%.d)
